@@ -1,2 +1,10 @@
-# AI_Engineer_Test_Development
-Create an API to upload docs in a Vector DB and provide an answer using LLM
+# AI_Engineer_Test_Django
+
+Super user:
+user fcoy
+email adress: felipecoyd@gmail.com
+Pass: 124578
+
+
+podman build -t test .
+podman run -p 8000:8000 test
