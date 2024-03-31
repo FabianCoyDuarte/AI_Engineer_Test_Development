@@ -183,13 +183,13 @@ Once you possess the correct credentials and have obtained a token, you will be 
 
 ![alt text](./images/available_autenticate.PNG)
 
-To engage with the Upload File option, click on the `Try Out` button. Subsequently, you will encounter two fields. The first one is the ID field, which is optional. By default, it is set to 0. However, if you input a different number, it signifies an update to the document. If the provided ID value does not exist in the database, the API response will display `Invalid ID. The last ID is {last ID value in Qdrant}`. The second field allows you to upload a file to Qdrant. If the file has a different extension other than .docx, the API will respond with `Invalid file type. Please upload a .docx file`.
+To engage with the Upload File option, click on the `Try it Out` button. Subsequently, you will encounter two fields. The first one is the ID field, which is optional. By default, it is set to 0. However, if you input a different number, it signifies an update to the document. If the provided ID value does not exist in the database, the API response will display `Invalid ID. The last ID is {last ID value in Qdrant}`. The second field allows you to upload a file to Qdrant. If the file has a different extension other than .docx, the API will respond with `Invalid file type. Please upload a .docx file`.
 
 For enhanced clarity and streamlined interaction with other systems, the API provides detailed explanations of the processes involved in the upload or update procedures. The interface displayed in the following image illustrates these two fields available for interaction.
 
 ![alt text](./images/Upload_doc.PNG)
 
-To utilize the Search option, begin by selecting the `Try Out` button. Subsequently, you can input your desired text into the prompt field, which corresponds to the user's search query. Afterward, click on `Execute`, and the API will provide a response message. However, if the question or prompt fails to meet the similarity score criteria, the API will respond with: `I don't have any data matching a document according to your search.`
+To utilize the Search option, begin by selecting the `Try it Out` button. Subsequently, you can input your desired text into the prompt field, which corresponds to the user's search query. Afterward, click on `Execute`, and the API will provide a response message. However, if the question or prompt fails to meet the similarity score criteria, the API will respond with: `I don't have any data matching a document according to your search.`
 
 The next image represents the visualization of Search
 
