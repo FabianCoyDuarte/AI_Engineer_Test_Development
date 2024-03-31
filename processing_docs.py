@@ -1,5 +1,4 @@
 import re
-import docx2txt
 import tiktoken
 from openai import OpenAI
 from qdrant_client import QdrantClient
@@ -29,7 +28,7 @@ def normalize_text(s):
     
     return s
 
-def create_embeddings(client, file_path, tokenizer, model):
+def create_embeddings(client, text, tokenizer, model):
     """
     Create embeddings for a given document file.
     
@@ -41,9 +40,9 @@ def create_embeddings(client, file_path, tokenizer, model):
         tuple: A tuple containing the embedding, tokens, and normalized text. 
                Returns a string when the file format is invalid.
     """
-    if file_path.lower().endswith(".docx"):
+    if len(text) > 0:
         # Read the document file
-        text = docx2txt.process(file_path)
+        # text = docx2txt.process(file_path)
         
         # Normalize the text
         normalized_text = normalize_text(text)
@@ -52,7 +51,7 @@ def create_embeddings(client, file_path, tokenizer, model):
         tokenizer = tiktoken.get_encoding(tokenizer)
         tokens = tokenizer.encode(normalized_text)
         
-        # Create embeddings using OpenAI client
+        #Create embeddings using OpenAI client
         embedding = client.embeddings.create(input=normalized_text, model=model).data[0].embedding
         
         return embedding, tokens, normalized_text
@@ -123,7 +122,7 @@ def upload_documents(collection_name, client_vdb, embeddings, text, id=0):
                         PointStruct(id=id, vector=embeddings, payload={"Document_text": text})
                     ]
                 )
-                return "Document update successful"
+                return "Document updated successful"
         else:
             # Create a collection with the given name and vector size in Qdrant
             client_vdb.create_collection(
@@ -140,7 +139,7 @@ def upload_documents(collection_name, client_vdb, embeddings, text, id=0):
             )
             return "Collection creation and document upload successful"
     except Exception as e:
-        raise Exception(f"Error during document upload or update: {e}")
+        raise ValueError(f"Error during document upload or update: {e}")
 
 ## Methods to use OPENAI API, process text, and get an answer from a Language Model
 def get_answer_llm(config, client_vdb, client_ia, prompt):
@@ -170,13 +169,18 @@ def get_answer_llm(config, client_vdb, client_ia, prompt):
         collection_name=config['qdrant']['collection'], query_vector=embedding, limit=1
     )
 
-    # Get the text of the best matching document
-    text = best_document[0].payload['Document_text']
+    ## If the best matching document has a score greater than or equal to the threshold, generate the answer
+    if best_document[0].score >= config['llm']['threshold']:
+        
+        # Get the text of the best matching document
+        text = best_document[0].payload['Document_text']
 
-    # Fill the prompt template with the question and the content of the best matching document
-    prompt_template = PromptTemplate.from_template(config['llm']['prompt_template'])
-    filled_prompt = prompt_template.format(question=normalized_prompt, content=text)
+        # Fill the prompt template with the question and the content of the best matching document
+        prompt_template = PromptTemplate.from_template(config['llm']['prompt_template'])
+        filled_prompt = prompt_template.format(question=normalized_prompt, content=text)
 
-    # Generate the answer from the Language Model using the filled prompt
-    response = llm.call_as_llm(filled_prompt)
-    return response
+        # Generate the answer from the Language Model using the filled prompt
+        response = llm.call_as_llm(filled_prompt)
+        return response
+    else:
+        return "I don´t have data that matching with a document according with your search."

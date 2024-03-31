@@ -1,0 +1,16 @@
+{
+    "1": {
+        "username": "fabiancoy",
+        "full_name": "Fabian Coy",
+        "email": "felipecoyd@gmail.com",
+        "hashed_password": "$2b$12$U4Vuz2xBeshj4DK8v/WEgO42hHi2eKr2Je8hA8Zv8OxjUQO4lwPQ.",
+        "disabled": false
+    },
+    "2": {
+        "username": "felipecoyd",
+        "full_name": "Felipe Coy",
+        "email": "fcoy@hotmail.com",
+        "hashed_password": "$2b$12$B77V0WYvs2w9H0BSiU3aTejZX5Zd9g.jvBm8z5XNXWMC2r5RhpFSK",
+        "disabled": false
+    }
+}

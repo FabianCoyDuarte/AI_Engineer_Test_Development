@@ -1,5 +1,6 @@
 import yaml
-
+import json
+import os.path
 def load_config(path: str = 'config.yaml') -> dict:
     """
     Load a YAML configuration file and return its contents as a dictionary.
@@ -20,3 +21,10 @@ def load_config(path: str = 'config.yaml') -> dict:
         except yaml.YAMLError as exc:
             print(exc)
     return config
+
+def load_json(file: str) -> dict:
+    os.path.isfile(file)
+    f = open (file, "r")
+    data = json.loads(f.read())
+    f.close()
+    return data
