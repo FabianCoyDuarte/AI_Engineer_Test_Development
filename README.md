@@ -1,4 +1,4 @@
-# AI_Engineer_Test_Django
+# AI_Engineer_Test_API_RAG
 
 ## Project Description
 
