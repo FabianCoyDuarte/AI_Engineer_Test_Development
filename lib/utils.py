@@ -1,7 +1,8 @@
 import yaml
 import json
 import os.path
-def load_config(path: str = 'config.yaml') -> dict:
+# Allow to load a YAML configuration file as a dictionary
+def load_config(path: str) -> dict:
     """
     Load a YAML configuration file and return its contents as a dictionary.
 
@@ -22,9 +23,26 @@ def load_config(path: str = 'config.yaml') -> dict:
             print(exc)
     return config
 
+# Allow to load a JSON file as a dictionary
 def load_json(file: str) -> dict:
+    """
+    Load JSON data from a file.
+
+    Args:
+        file (str): The path to the JSON file.
+
+    Returns:
+        dict: The loaded JSON data.
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
+
+    """
     os.path.isfile(file)
     f = open (file, "r")
     data = json.loads(f.read())
     f.close()
+
     return data
+
+

@@ -8,6 +8,7 @@ from langchain.prompts import PromptTemplate
 
 ## Methods to use OPENAI API, process text, and create embeddings
 
+# Process the text applying some normalization steps to remove special characters and multiple spaces
 def normalize_text(s):
     """
     Normalize the text by removing special characters and multiple spaces.
@@ -28,6 +29,7 @@ def normalize_text(s):
     
     return s
 
+# Using tiktoken framewrokt by OpenAI to create embeddings 
 def create_embeddings(client, text, tokenizer, model):
     """
     Create embeddings for a given document file.
@@ -59,7 +61,7 @@ def create_embeddings(client, text, tokenizer, model):
         return "Error: Invalid file format. Only .docx files are supported.", None, None
 
 ## Methods to use QDRANT API, create a collection and index a document
-
+# Get all collections in Qdrant just to check if the collection already exists
 def get_all_collections(client_vdb):
     """
     Get all collections in Qdrant.
@@ -83,6 +85,7 @@ def get_all_collections(client_vdb):
     except Exception as e:
         print(f"Error fetching collections from Qdrant: {e}")
 
+# Upload or update a document in the Qdrant vector database with the embeddings and text
 def upload_documents(collection_name, client_vdb, embeddings, text, id=0):
     """
     Upload or update a document in the Qdrant vector database.
