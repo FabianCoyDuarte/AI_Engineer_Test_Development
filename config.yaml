@@ -1,0 +1,20 @@
+openai:
+    key: string
+    model: string
+    tokenizer: string
+    llm_model: string
+qdrant:
+    host: string
+    port: int
+    collection: string
+    size_embeddings: int
+llm:
+    threshold: int
+    prompt_template: string
+secure:
+    SECRET_KEY: string
+    ALGORITHM: string
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
+    PASSWORD: string
+api:
+    max_length_prompt: int

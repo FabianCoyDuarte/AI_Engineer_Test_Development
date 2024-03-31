@@ -1,0 +1,17 @@
+{   "1":{
+        "name" : "Home",
+        "description": "Validation of the service, to verify that the service is active and running correctly. "
+    },
+    "2":{
+        "name" : "Upload_file",
+    "description": "\n Upload or Update a file into Qdrant vector database with the last id, saving the embeddings and the payload.  \n **If you want to upload a file, please do not include id**, \n  **If you want update a file, please include correct id**"
+    },
+    "3":{
+        "name" : "Search",
+        "description": "\n create an answer to the search request of user, you can include directly your search in the prompt field. Just include a prompt with max 100 charactes"
+    },
+    "4":{
+        "name" : "Generate Token",
+        "description": "\n Permite realizar solicitud de token bajo autenticación, enviando usuario **'username'** y contraseña **'password'** "
+    }
+}
