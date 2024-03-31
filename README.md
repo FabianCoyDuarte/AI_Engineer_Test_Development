@@ -12,7 +12,7 @@ Develop an endpoint that allows the upload of .docx documents. Utilize the OpenA
 
 Implement an endpoint that enables text search in the vector database. Retrieve the most relevant documents based on the similarity of their embeddings. Use these documents to respond to user queries or questions sent to the endpoint.
 
-## Develop
+## Development
 
 The development of this project involves implementing an API with the two main functionalities described in the project description. The API should provide endpoints for document processing and storage, as well as information retrieval and search.
 
