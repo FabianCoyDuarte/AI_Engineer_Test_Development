@@ -113,11 +113,13 @@ Before to run the API follow the next steps:
 
 1-Locate the script named create_user.py within the lib directory of the repository.
 
-2-Run the script by executing it with your preferred Python interpreter.
+2-Modify the path of files config.yaml locate in main directory and dummy_users_database.json located in folder called data in the script security.py located in folder called security. 
 
-3-Follow the instructions provided by the script. You will be prompted to enter a username and password.
+3-Run the script by executing it with your preferred Python interpreter and 
 
-4-Remember the username and password you've entered, as they will be required when interacting with the deployed API.
+4-Follow the instructions provided by the script. You will be prompted to enter a username and password.
+
+5-Remember the username and password you've entered, as they will be required when interacting with the deployed API.
 
 # Start API locally
 
