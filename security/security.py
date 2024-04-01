@@ -9,14 +9,14 @@ from fastapi import Depends, HTTPException, status
 
 
 # Load configuration from config.yaml file
-config = load_config('./config.yaml')
+config = load_config('../config.yaml')
 
 # Set the secret key and algorithm for JWT token
 SECRET_KEY = config['secure']['SECRET_KEY']
 ALGORITHM = config['secure']['ALGORITHM']
 
 # Load dummy user database from JSON file
-db_dummy = load_json('./data/dummy_users_database.json')
+db_dummy = load_json('../data/dummy_users_database.json')
 
 # Create a password context for hashing and verifying passwords
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
